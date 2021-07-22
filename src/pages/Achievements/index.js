@@ -92,13 +92,13 @@ export default () => {
             let addition = {
               Name: 'Untitled',
               student_id: [student_id],
-              About: 'No About',
+              About: 'No description',
               Type: 'Other',
               Associations: [ 'Other' ]
             };
 
             setAchievements([...achievements, addition]);
-            
+
             createAchievement(addition).then(id => {
               addition.id = id
             })

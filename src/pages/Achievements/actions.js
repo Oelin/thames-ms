@@ -13,6 +13,7 @@ export async function getAchievements(id) {
 
 
 export async function deleteAchievement(id) {
+  console.log('in delete with achievement id ', id)
   await API.delete(`achievement/${id}`)
 }
 
