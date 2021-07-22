@@ -33,8 +33,8 @@ export async function editAchievement(id, data) {
 }
 
 
-export async function downloadAchievements(achievements) {
-  window.open(URL.createObjectURL(new Blob([`
+export async function downloadAchievements(achievements, pdf) {
+  let url = URL.createObjectURL(new Blob([`
     <style>
       body {
         width: 100%;
@@ -48,7 +48,7 @@ export async function downloadAchievements(achievements) {
         border-top: 1px solid #aaa;
       }
     </style>
-    <script>window.onload = print</script>
+    ${pdf ? '<script>window.onload = print</script>' : ''}
     <h1>&#128162; Record of Achievement</h1>
     <div>
       ${achievements.map(achievement => `
@@ -62,5 +62,14 @@ export async function downloadAchievements(achievements) {
     </div>
   `],
   { type: 'text/html' }
-  )))
+  ))
+
+  if (pdf) {
+    window.open(url)
+  } else {
+    let a = document.createElement('a')
+    a.href = url
+    a.setAttribute('download', true)
+    a.click()
+  }
 }

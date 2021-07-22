@@ -29,7 +29,7 @@ export default class extends Component {
         <input
           name="Name"
           placeholder="Name..."
-	  value={this.state.Name}
+          value={this.state.Name}
           onChange={this.handleInputChange}
         />
 
@@ -80,11 +80,11 @@ export default class extends Component {
         />
 
         <textarea
-          placeholder="Description..."
+          placeholder="About..."
           rows="6"
-          name="Description"
+          name="About"
           type="text"
-          value={this.state.Description}
+          value={this.state.About}
           onChange={this.handleInputChange}
         />
 

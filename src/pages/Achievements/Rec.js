@@ -20,7 +20,7 @@ function getCourseRecommendations(about) {
 //
 //
 // async function mostLikelySubject(achievements) {
-//   const combinedText = achievements.map(({ Description, Name }) => `${Description} ${Name}`).join(' ')
+//   const combinedText = achievements.map(({ About, Name }) => `${About} ${Name}`).join(' ')
 //   console.log(combinedText)
 //
 //   const subjectPercentages = await API.get(`/topics/${encodeURIComponent(combinedText)}`)

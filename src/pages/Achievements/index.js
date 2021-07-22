@@ -120,8 +120,12 @@ export default () => {
         <h2>Download</h2>
         <section>
           <p>Download all your achievements as a perminent document</p>
+          <button onClick={() => downloadAchievements(achievements, true)}>
+            Print to PDF
+          </button>
+          or &nbsp;&nbsp;
           <button onClick={() => downloadAchievements(achievements)}>
-            Download now
+            Download as HTML
           </button>
         </section>
       </div>

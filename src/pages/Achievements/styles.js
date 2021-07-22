@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 
 export const AchievementsWrapper = styled.div`
+  padding: 4rem 0px;
+
   section p {
     font-size: 1.1rem;
     padding: 0;
