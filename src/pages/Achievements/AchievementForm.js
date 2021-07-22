@@ -52,7 +52,7 @@ export default class extends Component {
 					name="Associations"
 					isMulti
 					placeholder={this.state.Associations.join(", ")}
-					onChange={values => this.setState({ Associations: values.map(({ value }) => value) })}
+					onChange={values => values.length && this.setState({ Associations: values.map(({ value }) => value) })}
           options={[
             { value: 'Art', label: 'Art' },
             { value: 'Biology', label: 'Biology' },

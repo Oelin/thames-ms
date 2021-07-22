@@ -23,7 +23,7 @@ export default ({ achievements  }) => {
   useEffect(() => {
     (!courses || (achievements != previous)) && (async () => {
 
-      let about = achievements.map(({ About, Associations }) => `${About} ${Associations?.join(' ')}`).join(' ')
+      let about = achievements.map(({ Name, About, Associations }) => `${About} ${Associations?.join(' ')} ${Name}`).join(' ')
       let courses = await getCourseRecommendations(about)
       console.log('here here here', courses)
 
