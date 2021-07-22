@@ -71,7 +71,7 @@ export default () => {
 
       <div>
         {achievements.map(
-          ({ Name, Description, Type, Role, Associations }, i) =>
+          ({ Name, About, Type, Role, Associations }, i) =>
             (!filterType || filterType == Type) && (
             <AchievementCard
               onClick={() => {
@@ -82,7 +82,7 @@ export default () => {
                 {Name} {Type!=='Other' && `(${Type})`}
               </h3>
               <p>{Associations && `Subjects: ${Associations.join(', ')}`}</p>
-              <p>{Description}</p>
+              <p>{About}</p>
             </AchievementCard>
           )
         )}
@@ -92,7 +92,7 @@ export default () => {
             let addition = {
               Name: 'Untitled',
               student_id: [student_id],
-              Description: 'No description',
+              About: 'No About',
               Type: 'Other',
               Associations: [ 'Other' ]
             };

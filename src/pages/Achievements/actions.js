@@ -18,6 +18,7 @@ export async function deleteAchievement(id) {
 
 
 export async function createAchievement(data) {
+  data = {...data}
   let response = await API.create(`achievement`, [{ fields: data }])
 
   return response.content[0].id
@@ -27,6 +28,7 @@ export async function createAchievement(data) {
 export async function editAchievement(id, data) {
   data = {...data}
   delete data.id
+  delete data.student_id
   await API.update(`achievement/${id}`, data)
 }
 

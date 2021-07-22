@@ -3,32 +3,32 @@ import styled from 'styled-components'
 import API from '../../api'
 
 
-function coursesFromSubject(subject) {
-  return API.get(`/courses/${subject}`)
+function getCourseRecommendations(about) {
+  return API.update('/recommend', { about })
 }
 
 
-async function mostCommonSubject(achievements) {
-  let tab = {}
-  let list = []
-
-  achievements.forEach(({ Associations }) => list.push(...Associations));
-  list.forEach(subject => tab[subject] = ~~tab[subject] + 1)
-
-  return Object.entries(tab).map(([k, v]) => `${v}: ${k}`).sort().slice(-1)[0].split(': ')[1]
-}
-
-
-async function mostLikelySubject(achievements) {
-  const combinedText = achievements.map(({ Description, Name }) => `${Description} ${Name}`).join(' ')
-  console.log(combinedText)
-
-  const subjectPercentages = await API.get(`/topics/${encodeURIComponent(combinedText)}`)
-  console.log(subjectPercentages)
-
-  return 'maths'
-}
-
+// async function mostCommonSubject(achievements) {
+//   let tab = {}
+//   let list = []
+//
+//   achievements.forEach(({ Associations }) => list.push(...Associations));
+//   list.forEach(subject => tab[subject] = ~~tab[subject] + 1)
+//
+//   return Object.entries(tab).map(([k, v]) => `${v}: ${k}`).sort().slice(-1)[0].split(': ')[1]
+// }
+//
+//
+// async function mostLikelySubject(achievements) {
+//   const combinedText = achievements.map(({ Description, Name }) => `${Description} ${Name}`).join(' ')
+//   console.log(combinedText)
+//
+//   const subjectPercentages = await API.get(`/topics/${encodeURIComponent(combinedText)}`)
+//   console.log(subjectPercentages)
+//
+//   return 'maths'
+// }
+//
 
 const CourseList = styled.ul`
   li {
@@ -44,8 +44,10 @@ export default ({ achievements  }) => {
 
   useEffect(() => {
     (!courses || (achievements != previous)) && (async () => {
-      let subject = await mostLikelySubject(achievements)
-      let courses = await coursesFromSubject(subject)
+
+      let about = achievements.map(({ About }) => About).join(' ')
+      let courses = await getCourseRecommendations(about)
+
       setCourses(courses)
       setPrevious(achievements)
     })()
@@ -53,7 +55,7 @@ export default ({ achievements  }) => {
 
   return courses ? (
     <CourseList>
-      {courses.map(({ name, link, uni }) => <li><a href={ link }>{ name } ({ uni })</a></li>)}
+      {courses.map(({ name, link }) => <li><a href={ link }>{ name }</a></li>)}
     </CourseList>
   ) : (
     <div></div>
