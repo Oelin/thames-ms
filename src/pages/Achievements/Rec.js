@@ -31,11 +31,12 @@ export default ({ achievements  }) => {
     })()
   })
 
+
   return courses ? (
     <CourseList>
-      {courses.map(({ name, link }) => <li><a href={ link }>{ name }</a></li>)}
+      {courses.map(({ name, link, uni }) => <li><a href={link}>{uni}: {name.slice(0, 20)}...</a></li>)}
     </CourseList>
-  ) : (
+  ) : ( 
     <div></div>
   )
 }

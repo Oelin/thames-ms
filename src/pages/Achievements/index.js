@@ -97,8 +97,11 @@ export default () => {
               Associations: [ 'Other' ]
             };
 
-            addition.id = await createAchievement(addition);
             setAchievements([...achievements, addition]);
+            
+            createAchievement(addition).then(id => {
+              addition.id = id
+            })
           }}>
           <center>
             <b>Add achievement</b>
