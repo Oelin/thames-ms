@@ -81,7 +81,7 @@ export default () => {
               <h3>
                 {Name} {Type!=='Other' && `(${Type})`}
               </h3>
-              <p>{Associations && `Subjects: ${Associations.join(', ')}`}</p>
+              <p>{Associations && `Subjects: ${Associations?.join(', ')}`}</p>
               <p>{About}</p>
             </AchievementCard>
           )

@@ -23,8 +23,9 @@ export default ({ achievements  }) => {
   useEffect(() => {
     (!courses || (achievements != previous)) && (async () => {
 
-      let about = achievements.map(({ About, Associations }) => `${About} ${Associations.join(' ')}`).join(' ')
+      let about = achievements.map(({ About, Associations }) => `${About} ${Associations?.join(' ')}`).join(' ')
       let courses = await getCourseRecommendations(about)
+      console.log('here here here', courses)
 
       setCourses(courses)
       setPrevious(achievements)
@@ -34,9 +35,9 @@ export default ({ achievements  }) => {
 
   return courses ? (
     <CourseList>
-      {courses.map(({ name, link, uni }) => <li><a href={link}>{uni}: {name.slice(0, 20)}...</a></li>)}
+      {courses.map(({ name, link }) => <li><a href={link}>{name.slice(0, 30)}...</a></li>)}
     </CourseList>
-  ) : ( 
+  ) : (
     <div></div>
   )
 }

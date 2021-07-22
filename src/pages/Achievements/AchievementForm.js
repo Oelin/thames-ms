@@ -60,7 +60,7 @@ export default class extends Component {
             { value: 'Chemistry', label: 'Chemistry' },
             { value: 'Computer science', label: 'Computer science' },
             { value: 'French', label: 'French' },
-            { value: 'Geogrpahy', label: 'Geogrpahy' },
+            { value: 'Geography', label: 'Geography' },
             { value: 'Graphics', label: 'Graphics' },
             { value: 'History', label: 'History' },
             { value: 'Maths', label: 'Maths' },
